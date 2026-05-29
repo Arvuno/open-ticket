@@ -1,0 +1,47 @@
+# PR Candidates — open-discord-bots/open-ticket
+
+## 15+ Candidates for v4.2.0
+
+| candidate_id | title | category | linked_issue | source | problem | proposed_solution | target_files | test_plan | risk_level | expected_diff_size | merge_likelihood | maintainer_discussion_needed | selected |
+|--------------|-------|----------|--------------|--------|---------|-------------------|--------------|-----------|------------|-------------------|------------------|------------------------------|---------|
+| PR-01 | Add response-time and resolution-time statistics | Feature/Stats | #200 | quality_audit | Two statistics (`opendiscord:response-time`, `opendiscord:resolution-time`) are documented in issue #200 but have TODO comments and missing translation keys. | Implement the two stats: response-time = time from ticket creation to first staff reply, resolution-time = time from ticket creation to close. Add language keys `stats.properties.responseTime` and `stats.properties.resolutionTime` to all 38+ language files. | `src/data/framework/statisticLoader.ts`, `languages/*.json` | Build succeeds, stats visible in `/stats` output, translation keys present in english.json and one other language | Low | ~150 lines (statisticLoader) + ~400 lines (38 lang files) | High | No | |
+| PR-02 | Implement `/topic list` subcommand | Feature/Command | #200 | quality_audit | Command loader has `//TODO: topic list (v4.2)` placeholder. | Implement `/topic list` with optional filter options (status, priority). Follow pattern of existing `/clear list` subcommand. | `src/data/framework/commandLoader.ts` | Build succeeds, command registers, list displays correctly with filters | Low | ~80 lines | High | No | |
+| PR-03 | Implement `/priority list` subcommand | Feature/Command | #200 | quality_audit | Command loader has `//TODO: priority list (v4.2)` placeholder. | Implement `/priority list` with same filter pattern as topic list. | `src/data/framework/commandLoader.ts` | Build succeeds, command registers, list displays correctly with filters | Low | ~80 lines | High | No | |
+| PR-04 | Improve error message for "Server Id Missing" | DX/Error Messages | none | quality_audit | Error message "Server Id Missing!" is cryptic — gives no indication which config file or setting is wrong. | Update error to include config path hint: "Server Id Missing! Please set 'serverId' in config/general.jsonc" | `src/index.ts` | Build succeeds, error message includes config path | Low | ~5 lines | High | No | |
+| PR-05 | Improve error message for "Unknown backup language" | DX/Error Messages | none | quality_audit | Error "Unknown backup language 'X'!" is cryptic — user doesn't know what backup language means. | Update error to explain: "Unknown backup language 'X'! Check your 'fallbackLanguage' setting in config/general.jsonc" | `src/index.ts` | Build succeeds, error message explains setting name and config file | Low | ~5 lines | High | No | |
+| PR-06 | Complete Japanese translation for urlInvalidHttp/urlInvalidProtocol | Translation | none | quality_audit | Japanese language file has English text for `urlInvalidHttp` and `urlInvalidProtocol` keys. | Translate to Japanese: "このURLはhttps://プロトコルのみ使用できます" and "このURLはhttp://およびhttps://プロトコルのみ使用できます" | `languages/japanese.json` | Build succeeds, Japanese bot responds with translated error | Low | ~10 lines | High | No | |
+| PR-07 | Complete Korean translation for urlInvalidHttp/urlInvalidProtocol | Translation | none | quality_audit | Korean language file has English text for `urlInvalidHttp` and `urlInvalidProtocol` keys. | Translate to Korean proper text | `languages/korean.json` | Build succeeds, Korean bot responds with translated error | Low | ~10 lines | High | No | |
+| PR-08 | Complete Simplified Chinese translation for urlInvalidHttp/urlInvalidProtocol | Translation | none | quality_audit | Simplified Chinese language file has English text for these keys. | Translate to Simplified Chinese | `languages/simplified-chinese.json` | Build succeeds, Chinese bot responds with translated error | Low | ~10 lines | High | No | |
+| PR-09 | Add config validation for panelButtonRowLength | Validation | #200 | quality_audit | Issue #200 mentions `panelButtonRowLength` setting but no validation for button count per row (Discord max: 5). | Add checker validation: if `panelButtonRowLength > 5`, show config error. Also validate `panelButtonRowLength` minimum is 1. | `src/data/framework/checkerLoader.ts` | Build succeeds, invalid config rejected with clear error | Low | ~30 lines | High | No | |
+| PR-10 | Add autoclose and autodelete stat properties to language files | Translation/Stats | #200 | quality_audit | Stats `opendiscord:autoclose` and `opendiscord:autodelete` mentioned in #200 but keys don't exist in language files. | Add `stats.properties.autoclose` and `stats.properties.autodelete` keys to english.json and all language files with appropriate translations | `languages/*.json` | Build succeeds, stats display in correct language | Low | ~200 lines | High | No | |
+| PR-11 | Add permission check documentation for verify bar | Documentation | #200 | quality_audit | Issue #200 notes "Add a permission check before accessing the button verify bar" — no documentation exists on current behavior. | Document current verify bar permission behavior in README or docs. If implementable as a small fix, add permission check to verify bar access. | `README.md`, potentially `src/components/verifybarModifiers.ts` | Build succeeds, docs reflect current behavior | Low | ~30 lines docs | High | No | |
+| PR-12 | Clean up TODO placeholders in component loading sequence | Cleanup | none | quality_audit | Three `//TODO!!` placeholders in index.ts startup sequence for shared/message/modal component loading stages. | Either implement the loading stages or document why they're skipped. At minimum remove dead placeholder code. | `src/index.ts` | Build succeeds, startup sequence unchanged | Low | ~15 lines | High | No | |
+| PR-13 | Fix verifybarModifiers TODO comment | Cleanup | none | quality_audit | Single `//TODO` in verifybarModifiers.ts:27 has no context. | Either implement the TODO or remove the commented code. | `src/components/verifybarModifiers.ts` | Build succeeds | Low | ~3 lines | High | No | |
+| PR-14 | Improve panel dropdown error message specificity | DX/Error Messages | none | quality_audit | "Unable to create panel dropdown with options that don't match: ticket, role, sub-panel!" doesn't indicate which option caused the failure. | Include the invalid option ID or type in the error message | `src/builders/dropdowns.ts` | Build succeeds, error message identifies failing option | Low | ~5 lines | High | No | |
+| PR-15 | Add panel button row length validation for minimum value | Validation | #200 | quality_audit | `panelButtonRowLength` validation for max (5) exists but minimum (1) not validated. Users could set 0 or negative. | Add lower bound validation in checker | `src/data/framework/checkerLoader.ts` | Build succeeds, config rejects values < 1 | Low | ~10 lines | High | No | |
+| PR-16 | Document remote ticket opening `/ticket <user>` syntax | Documentation | #200 | quality_audit | Remote ticket creation via `/ticket <user>` mentioned in #200 but no docs on syntax, permissions, or audit trail. | Add documentation to README or docs site | `README.md` | Docs build correctly | Low | ~20 lines | Medium | No |
+| PR-17 | Add link-check CI for external docs URL | CI/Documentation | none | quality_audit | External docs URL `https://otdocs.dj-dj.be` has no CI validation — could go stale. | Add GitHub Action workflow that checks the URL returns 200 | `.github/workflows/` (new file) | CI passes, URL validated | Low | ~30 lines | High | No |
+| PR-18 | Add closed tickets exclusion to ticket limit docs | Documentation | #200 | quality_audit | Issue #200 mentions "ability to make closed tickets not count towards ticket limit" but no docs on current limit behavior or new setting. | Document current ticket limit behavior and the new setting if implemented | `README.md` or docs | Docs build correctly | Low | ~15 lines | Medium | No |
+
+---
+
+## Candidate Prioritization Matrix
+
+| Priority | Candidates | Rationale |
+|----------|------------|-----------|
+| **P0 — Do First** | PR-01, PR-02, PR-03, PR-06, PR-07, PR-08, PR-10 | Directly address documented TODOs and translation gaps — clear scope, no risk, high value |
+| **P1 — Next** | PR-04, PR-05, PR-14, PR-12, PR-13 | Error message improvements and code cleanup — small diffs, safe changes |
+| **P2 — Later** | PR-09, PR-15, PR-11 | Config validation and docs — medium effort, clear benefit |
+| **P3 — If Time** | PR-16, PR-17, PR-18 | Documentation and CI — nice to have, not critical |
+
+---
+
+## Rejected Candidates (Out of Scope)
+
+| candidate_id | title | reason_excluded |
+|-------------|-------|-----------------|
+| — | Built-in SQLite (#198) | Framework change, requires design review, dependency updates |
+| — | Improved Plugin Worker Splitting (#161) | Major breaking change, out of scope per contribution guidelines |
+| — | Closed ticket channel emojis (#199) | Already implemented (closed) |
+| — | .jsonc support (#197) | Already implemented (closed) |
+| — | Automatic deletion of Responder Timeout errors (#195) | Already implemented (closed) |

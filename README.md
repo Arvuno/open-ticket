@@ -187,3 +187,6 @@ This will help us grow and reach even more people!
 [Changelog](https://otgithub.dj-dj.be/releases) - [Documentation](https://otdocs.dj-dj.be) - [Website](https://openticket.dj-dj.be) - [Support Server](https://discord.dj-dj.be) - [License](./LICENSE.md)<br>
 
 © 2021 - 2026 - [DJdj Development](https://www.dj-dj.be) - [Terms](https://www.dj-dj.be/terms) - [Privacy Policy](https://www.dj-dj.be/privacy) - [Support Us](https://github.com/sponsors/DJj123dj)
+
+## Contributors
+- Star this repo if it helped!
