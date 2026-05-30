@@ -1,0 +1,14 @@
+name: Greet Contributors
+
+on:
+  pull_request:
+    types: [opened, merged]
+  issues:
+    types: [opened]
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Greet
+        run: echo "Thank you for your contribution!"

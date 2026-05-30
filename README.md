@@ -26,7 +26,8 @@ The bot is fully translated into <b>38+ languages</b> and has been battle-tested
 
 ---
 > **[-> Navigate to (⏱️ Quick Setup)](#️-quick-start)**  
-> **[-> Navigate to (📚 Documentation)](https://otdocs.dj-dj.be)**  
+> **[-> Navigate to [📚 Documentation]]()
+[-> Navigate to [🤝 Contributing](CONTRIBUTING.md)] Documentation)](https://otdocs.dj-dj.be)**  
 > **[-> Navigate to (📞 Support Server)](https://discord.dj-dj.be)**  
 > **[-> Navigate to (🧩 Plugins/Addons)](https://odplugins.dj-dj.be)**  
 > **[-> Navigate to (🦇 Pterodactyl Eggs)](.github/pterodactyl-eggs/README.md)**  
@@ -102,7 +103,8 @@ The bot is fully translated into <b>38+ languages</b> and has been battle-tested
 > 8. Install plugins from the [**Official Plugin Repository**](https://github.com/open-discord-bots/plugins)
 >
 > #### 🚦 Next Steps
-> **[-> Navigate to (📚 Documentation)](https://otdocs.dj-dj.be)**  
+> **[-> Navigate to [📚 Documentation]]()
+[-> Navigate to [🤝 Contributing](CONTRIBUTING.md)] Documentation)](https://otdocs.dj-dj.be)**  
 > **[-> Navigate to (📞 Support Server)](https://discord.dj-dj.be)**  
 > **[-> Navigate to (🧩 Plugins/Addons)](https://odplugins.dj-dj.be)**  
 > **[-> Navigate to (🦇 Pterodactyl Eggs)](.github/pterodactyl-eggs/README.md)**  

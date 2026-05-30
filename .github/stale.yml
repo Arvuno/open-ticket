@@ -1,0 +1,20 @@
+# Configuration for stale issues and PRs
+
+days-before-stale: 60
+days-before-close-stale: 7
+
+issues:
+  label-to-add: stale
+  exempt-labels: []
+  stale-label-message: 'This issue has been automatically marked as stale because it has not had recent activity.'
+  close-label-message: 'This issue has been closed because it was stale.'
+
+prs:
+  label-to-add: stale
+  exempt-labels: []
+  stale-label-message: 'This PR has been automatically marked as stale because it has not had recent activity.'
+  close-label-message: 'This PR has been closed because it was stale.'
+
+# Don't mark these as stale
+exempt-all-milestones: true
+exempt-all-assignees: true
